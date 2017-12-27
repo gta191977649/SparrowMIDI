@@ -76,8 +76,32 @@
         </div>
         </div>
     </nav>
-        <div class="container">
-        @yield('content')
+
+    <div class="container mt-3">
+        <div class="row">
+
+            <div class="col-12 col-md-3 mb-3">
+                <div class="card">
+                    <div class="card-header">
+                        Main
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item"><a href="{{route('ucp.midi.add')}}">Upload new MIDI</a></li>
+                        <li class="list-group-item">MIDI Management</li>
+                        <li class="list-group-item">Notifications</li>
+                    </ul>
+                
+                </div>
+            </div>
+            
+            <div class="col-sm">
+                <div class="card">
+                    <div class="card-body">
+                        @yield('content')
+                    </div>
+                </div>
+            </div>
+            
         </div>
     </div>
 
