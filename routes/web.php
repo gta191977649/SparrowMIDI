@@ -18,7 +18,14 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-//UCP
-Route::get('/ucp/','UCPController@index')->name("ucp");
+
+
+Route::middleware(['auth'])->group(function () {
+    //UCP
+    Route::get('/ucp/','UCPController@index')->name("ucp");
     //MIDI
     Route::get('/ucp/midi/new','MidiController@upload')->name("ucp.midi.add");
+});
+
+
+

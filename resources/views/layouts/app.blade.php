@@ -67,8 +67,16 @@
                     {{Auth::user()->name}}
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">UCP</a>
-                    <a class="dropdown-item" href="#">Logout</a>
+                    <a class="dropdown-item" href="{{route('ucp')}}">UCP</a>
+                    <a class="dropdown-item" href="{{ route('logout') }}"
+                        onclick="event.preventDefault();
+                                    document.getElementById('logout-form').submit();">
+                        Logout
+                    </a>
+
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        {{ csrf_field() }}
+                    </form>
                     </div>
                 </li>
             </ul>
@@ -81,6 +89,9 @@
         </div>
     </div>
 
+    <footer class="text-center">
+    <p>&copy Project Sparrow 2018</p>
+    </footer>
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
 </body>

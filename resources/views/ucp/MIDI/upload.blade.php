@@ -1,7 +1,7 @@
 @extends("layouts.ucp")
 
 @section("content")
-    <h1>New MIDI</h1>
+    <h1 class="text-primary">New MIDI</h1>
     <hr/>
     <form>
         <div class="form-group">
