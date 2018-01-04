@@ -16,8 +16,16 @@ class Midi extends Model
             "description" => $request['description'],
     */
     protected $fillable = [
-        'title', 'singer', 'composer','cat_id','tag','description'
+        'user_id','title', 'singer', 'composer','cat_id','tag','description','file'
     ];
 
+    public function user()
+    {
+        return $this->belongsTo('App\User');
+    }
+    public function cat()
+    {
+        return $this->belongsTo('App\Cat');
+    }
 
 }

@@ -1,9 +1,9 @@
 <template>
     <div>
-       <ul v-for="midi in recents_midis">
-        <li><a :href="'/midi/'+midi.id" >{{midi.title}} - {{midi.singer}}</a></li>
-       </ul>
-
+        <p v-if="!recents_midis">无数据</p>
+        <ul v-for="midi in recents_midis">
+            <li><a :href="'/midi/'+midi.id" >{{midi.title}} - {{midi.singer}}</a></li>
+        </ul>
     </div>
 </template>
 

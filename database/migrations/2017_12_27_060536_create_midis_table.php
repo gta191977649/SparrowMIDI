@@ -23,12 +23,14 @@ class CreateMidisTable extends Migration
     {
         Schema::create('midis', function (Blueprint $table) {
             $table->increments('id');
-            $table->text('title');
-            $table->text('singer');
-            $table->text('composer');
+            $table->integer('user_id');
+            $table->string('title');
+            $table->string('singer');
+            $table->string('composer');
             $table->integer('cat_id');
             $table->string('tag')->nullable();
-            $table->string('description')->nullable();
+            $table->text('description')->nullable();
+            $table->text('file');
             $table->timestamps();
         });
     }

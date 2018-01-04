@@ -24,8 +24,8 @@ class MidiController extends Controller
     //MIDI播放页面
     public function file($id)
     {
-        $midi = Midi::find($id)->get();
-        return $midi ? view("midi.play") : "FAILD";
+        $midi = Midi::find($id);
+        return $midi ? view("midi.play",compact("midi")) : "FAILD";
     }
     /** 
      * Display a listing of the resource.
@@ -69,13 +69,14 @@ class MidiController extends Controller
         $file_url = $location.$filename;
 
         //处理文件
-        Midi::create([
+        Auth::user()->midis()->create([
             "title" => $request['title'],
             "singer" => $request['singer'],
             "composer" => empty($request['composer']) ? "Unknown" : $request['composer'],
             "cat_id" => $request['cat'],
             "tag" => $request['tag'],
             "description" => $request['description'],
+            "file" => $file_url,
         ]);
         
     
