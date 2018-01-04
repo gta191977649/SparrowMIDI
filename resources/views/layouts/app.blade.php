@@ -86,10 +86,13 @@
     </nav>
         <div class="container">
         @yield('content')
+        <hr/>
         </div>
     </div>
 
+    
     <footer class="text-center">
+        
     <p>&copy Project Sparrow 2018</p>
     </footer>
     <!-- Scripts -->
