@@ -10,7 +10,7 @@
                 
                 <ul class="list-group list-group-flush">
                     @foreach($cats as $cat)
-                        <li class="list-group-item">{{$cat->name}}</li>
+                        <li class="list-group-item"><a href="{{route('search.cat',['cat' => $cat->id])}}">{{$cat->name}}</a></li>
                     @endforeach 
                 </ul>
             </div>
@@ -35,7 +35,7 @@
                 <div class="card-body">
                     <form method="get" action="{{route('search')}}">
                         <div class="form-group">
-                            <input name="keyword" type="text" class="form-control" name="search" placeholder="Search anything you want">
+                            <input name="keyword" type="text" class="form-control" name="search" placeholder="搜索MIDI">
                         </div>
                         <button type="submit" class="btn btn-primary">搜索</button>
                         

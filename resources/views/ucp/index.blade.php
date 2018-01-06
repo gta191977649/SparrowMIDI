@@ -7,28 +7,18 @@
 
     <div class="card">
         <div class="card-header">
-            Recently Upload
+            最近上传
         </div>
         <div class="card-body">
-            <table class="table table-sm">
+            <table class="table table-sm" style="font-size: 16px;">
             <tbody>
+                @foreach($user->midis as $midi)
                 <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
+                <td scope="row"><a href="{{route('midi.file',['id'=>$midi->id])}}">{{$midi->title}} - {{$midi->singer}}</a></td>
+                <td>{!! $midi->rateStar() !!}</td>
+                <td class="text-right">{{$midi->created_at}}</td>
                 </tr>
-                <tr>
-                <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-                </tr>
-                <tr>
-                <th scope="row">3</th>
-                <td colspan="2">Larry the Bird</td>
-                <td>@twitter</td>
-                </tr>
+                @endforeach
             </tbody>
             </table>
         </div>

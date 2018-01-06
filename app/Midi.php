@@ -32,4 +32,18 @@ class Midi extends Model
     {
         return round(filesize($this->file)*0.001,1);
     }
+
+    public function rateStar()
+    {
+        $str = "";
+
+        for($i = 0; $i < 10; $i++)
+        {
+            if($i < $this->rate) $str .= "<i class='fa fa-star text-warning' aria-hidden='true'></i>";
+            else $str .= "<i class='fa fa-star-o text-warning' aria-hidden='true'></i>";
+        }
+        
+        return $str;
+
+    }
 }

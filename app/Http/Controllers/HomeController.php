@@ -26,4 +26,9 @@ class HomeController extends Controller
         $cats = Cat::get();
         return view('index',compact("cats"));
     }
+
+    public function about()
+    {
+        return view("about");
+    }
 }

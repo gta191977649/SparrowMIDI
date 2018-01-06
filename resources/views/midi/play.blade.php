@@ -10,7 +10,7 @@
                 文件信息
             </div>
             <div class="card-body">
-                <table  class="table">
+                <table  class="table table-sm">
                     <tbody>
                         <tr>
                             <td>曲名:</td>

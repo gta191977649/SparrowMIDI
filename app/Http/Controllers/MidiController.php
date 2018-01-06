@@ -9,7 +9,7 @@ use Auth;
 class MidiController extends Controller
 {
     //API
-    //Search
+    //搜索关键字
     public function search(Request $req)
     {   
         $midis = Midi::where("title",'LIKE', '%'.$req["keyword"].'%')->orWhere("singer",'LIKE', '%'.$req["keyword"].'%')->orWhere("tag",'LIKE', '%'.$req["keyword"].'%')->paginate(10);
@@ -17,14 +17,14 @@ class MidiController extends Controller
         return view("midi.search",compact("midis","keyword"));
     }
 
-    //Search tag
+    //搜索标签
     public function searchTag(Request $req,$tag)
     {
         $midis = Midi::where("tag",'LIKE', '%'.$tag.'%')->paginate(10);
         $keyword = $tag;
         return view("midi.search",compact("midis","keyword"));
     }
-    //Search tag
+    //搜索音源
     public function searchOngen(Request $req,$ongen)
     {
         $midis = Midi::where("ongen",'LIKE', '%'.$ongen.'%')->paginate(10);
@@ -32,6 +32,14 @@ class MidiController extends Controller
         return view("midi.search",compact("midis","keyword"));
     }
 
+    //搜索归类
+    public function searchCat($cat)
+    {
+       
+        $midis = Midi::where("cat_id",$cat)->paginate(10);
+        $keyword = Cat::find($cat)->name;
+        return view("midi.search",compact("midis","keyword"));
+    }
 
     //列出全部MIDI
     public function apiIndex()

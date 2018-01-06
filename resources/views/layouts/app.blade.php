@@ -94,9 +94,11 @@
     <footer>
     <div class="container">
         <a class="float-right" href="#div">Back to top <i class="fa fa-caret-up"></i></a>
-        <strong>{{ config('app.name', 'Laravel') }}</strong> is powered by Project Sparrow 2018
-        
-        
+        <strong>{{ config('app.name', 'Laravel') }}</strong> is powered by <a href="{{route('about')}}">Project Sparrow 2018</a>
+        <br/>
+        <a href="https://github.com/PrpjectSparrow/SparrowMIDI"><i class="fa fa-github" aria-hidden="true"></i>
+            Fork me on github!</a>
+        , <a href="https://www.gnu.org/licenses/gpl-3.0.en.html">GPLv3</a>
     </div>
     
     
