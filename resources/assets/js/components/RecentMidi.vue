@@ -1,10 +1,15 @@
 <template>
+    
     <div>
         <p v-if="!recents_midis">无数据</p>
-        <ul v-for="midi in recents_midis">
-            <li><a :href="'/midi/'+midi.id" >{{midi.title}} - {{midi.singer}}</a></li>
+        <ul class="list-group list-group-flush" v-for="midi in recents_midis">
+            <li class="list-group-item">
+                <a :href="'/midi/'+midi.id" >{{midi.title}} - {{midi.singer}}</a>
+                <span class="float-right">[{{midi.created_at}}]</span>
+            </li>
         </ul>
     </div>
+        
 </template>
 
 <script>

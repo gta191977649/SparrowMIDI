@@ -47025,6 +47025,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     mounted: function mounted() {
@@ -47060,10 +47065,14 @@ var render = function() {
       !_vm.recents_midis ? _c("p", [_vm._v("无数据")]) : _vm._e(),
       _vm._v(" "),
       _vm._l(_vm.recents_midis, function(midi) {
-        return _c("ul", [
-          _c("li", [
+        return _c("ul", { staticClass: "list-group list-group-flush" }, [
+          _c("li", { staticClass: "list-group-item" }, [
             _c("a", { attrs: { href: "/midi/" + midi.id } }, [
               _vm._v(_vm._s(midi.title) + " - " + _vm._s(midi.singer))
+            ]),
+            _vm._v(" "),
+            _c("span", { staticClass: "float-right" }, [
+              _vm._v("[" + _vm._s(midi.created_at) + "]")
             ])
           ])
         ])

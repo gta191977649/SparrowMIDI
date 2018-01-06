@@ -2,32 +2,31 @@
 
 @section('content')
     <div class="row mt-3">
-        <div class="col-2">
+        <div class="col-12 col-md-2 mb-3">
             <div class="card">
                 <div class="card-header">
                     分类
                 </div>
                 
-                <ul>
+                <ul class="list-group list-group-flush">
                     @foreach($cats as $cat)
-                        <li>{{$cat->name}}</li>
+                        <li class="list-group-item">{{$cat->name}}</li>
                     @endforeach 
                 </ul>
             </div>
         </div>
-        <div class="col-7">
+
+        <div class="col-12 col-md-7 mb-3">
             <div class="card">
                 <div class="card-header">
                     最近上传的MIDI
                 </div>
-                <div class="card-body">
-                    <recent-midi></recent-midi>
-                </div>
-            </div>
-
+                <recent-midi></recent-midi>
+            </div>        
         </div>
-        <div class="col-3">
-            <a role="button" class="btn btn-outline-success btn-lg btn-block text-success mb-3">有新的 MIDI 作品？快来上传哇~~</a>
+
+        <div class="col-12 col-md-3">
+            <a role="button" href="{{route('ucp.midi.add')}}" class="btn btn-outline-success btn-lg btn-block text-success mb-3">分享你的MIDI~</a>
             
             <div class="card">
                 <div class="card-header">
@@ -38,7 +37,7 @@
                         <div class="form-group">
                             <input name="keyword" type="text" class="form-control" name="search" placeholder="Search anything you want">
                         </div>
-                        <button type="submit" class="btn btn-primary">Search</button>
+                        <button type="submit" class="btn btn-primary">搜索</button>
                         
                     </form>
                 </div>
