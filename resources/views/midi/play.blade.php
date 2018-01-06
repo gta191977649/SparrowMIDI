@@ -40,7 +40,7 @@
 
         <div class="col-12 col-md-9">
             
-        <div class="card text-center mb-3">
+        <div class="card mb-3">
             <div class="card-header">
                 <ul class="nav nav-tabs card-header-tabs">
                     <li class="nav-item">
@@ -69,7 +69,25 @@
                 </object>	
                 <hr/>
                 <a class="btn btn-primary float-right" role="button" href="{{URL::to('/')}}/{{$midi->file}}" >下载</a>
-
+                <!-- MIDI文件信息 -->
+                大小: 
+        <span class="text-success">{{$midi->fileSize()}} KB</span>
+        <span>
+                
+            @php 
+                $tags = explode(",", $midi->tag);
+                $ongens = explode(",", $midi->ongen);
+            @endphp
+                音源:
+            @foreach($ongens as $ongen)
+                <a href="{{route('search.ongen',['ongen' => $ongen])}}">{{$ongen}}</a>
+            @endforeach
+                标签:
+            @foreach($tags as $tag)
+                <a href="{{route('search.tag',['tag' => $tag])}}">{{$tag}}</a>
+            @endforeach
+            </span>
+        </p>
             </div>
         </div>
         
