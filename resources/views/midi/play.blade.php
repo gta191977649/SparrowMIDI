@@ -40,14 +40,14 @@
 
         <div class="col-12 col-md-9">
             
-        <div class="card text-center">
+        <div class="card text-center mb-3">
             <div class="card-header">
                 <ul class="nav nav-tabs card-header-tabs">
                     <li class="nav-item">
                         <a class="nav-link active" href="#">MIDI</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">mp3</a>
+                        <a class="nav-link" href="#">KARAOKE</a>
                     </li>
                 </ul>
             </div>
@@ -72,8 +72,17 @@
 
             </div>
         </div>
+        
+        <!-- 简介 -->
+        <div class="card">
+            <h5 class="card-header">简介/歌词</h5>
+            <div class="card-body">
+                {{$midi->description}}
+            </div>
+        </div>  
+
 
         </div>
-       
+        
     </div>
 @endsection
