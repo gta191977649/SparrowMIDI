@@ -91,9 +91,15 @@
     </div>
 
     
-    <footer class="text-center">
+    <footer>
+    <div class="container">
+        <a class="float-right" href="#div">Back to top <i class="fa fa-caret-up"></i></a>
+        <strong>{{ config('app.name', 'Laravel') }}</strong> is powered by Project Sparrow 2018
         
-    <p>&copy Project Sparrow 2018</p>
+        
+    </div>
+    
+    
     </footer>
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
