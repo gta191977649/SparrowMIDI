@@ -34,9 +34,9 @@
                     搜索
                 </div>
                 <div class="card-body">
-                    <form>
+                    <form method="get" action="{{route('search')}}">
                         <div class="form-group">
-                            <input type="email" class="form-control" name="search" placeholder="Search anything you want">
+                            <input name="keyword" type="text" class="form-control" name="search" placeholder="Search anything you want">
                         </div>
                         <button type="submit" class="btn btn-primary">Search</button>
                         

@@ -9,6 +9,29 @@ use Auth;
 class MidiController extends Controller
 {
     //API
+    //Search
+    public function search(Request $req)
+    {   
+        $midis = Midi::where("title",'LIKE', '%'.$req["keyword"].'%')->orWhere("singer",'LIKE', '%'.$req["keyword"].'%')->orWhere("tag",'LIKE', '%'.$req["keyword"].'%')->paginate(10);
+        $keyword = $req["keyword"];
+        return view("midi.search",compact("midis","keyword"));
+    }
+
+    //Search tag
+    public function searchTag(Request $req,$tag)
+    {
+        $midis = Midi::where("tag",'LIKE', '%'.$tag.'%')->paginate(10);
+        $keyword = $tag;
+        return view("midi.search",compact("midis","keyword"));
+    }
+    //Search tag
+    public function searchOngen(Request $req,$ongen)
+    {
+        $midis = Midi::where("ongen",'LIKE', '%'.$ongen.'%')->paginate(10);
+        $keyword = $ongen;
+        return view("midi.search",compact("midis","keyword"));
+    }
+
 
     //列出全部MIDI
     public function apiIndex()
@@ -75,6 +98,7 @@ class MidiController extends Controller
             "composer" => empty($request['composer']) ? "Unknown" : $request['composer'],
             "cat_id" => $request['cat'],
             "tag" => $request['tag'],
+            "ongen" => $request['ongen'],
             "description" => $request['description'],
             "file" => $file_url,
         ]);

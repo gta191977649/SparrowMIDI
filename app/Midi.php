@@ -16,7 +16,7 @@ class Midi extends Model
             "description" => $request['description'],
     */
     protected $fillable = [
-        'user_id','title', 'singer', 'composer','cat_id','tag','description','file'
+        'user_id','title', 'singer', 'composer','cat_id','tag','description','file','ongen'
     ];
 
     public function user()
@@ -28,4 +28,8 @@ class Midi extends Model
         return $this->belongsTo('App\Cat');
     }
 
+    public function fileSize()
+    {
+        return round(filesize($this->file)*0.001,1);
+    }
 }

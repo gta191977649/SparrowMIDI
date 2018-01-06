@@ -28,7 +28,9 @@ class CreateMidisTable extends Migration
             $table->string('singer');
             $table->string('composer');
             $table->integer('cat_id');
+            $table->integer('rate')->default(0);
             $table->string('tag')->nullable();
+            $table->string('ongen')->nullable();
             $table->text('description')->nullable();
             $table->text('file');
             $table->timestamps();

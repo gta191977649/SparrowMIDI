@@ -18,10 +18,13 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('index');
-
-
 //常规
 Route::get('/midi/{id}','MidiController@file')->name("midi.file");
+
+//Search
+Route::get('/search/','MidiController@search')->name("search");
+Route::get('/tag/{tag}','MidiController@searchTag')->name("search.tag");
+Route::get('/ongen/{ongen}','MidiController@searchOngen')->name("search.ongen");
 
 //API
 Route::prefix('api')->group(function () {

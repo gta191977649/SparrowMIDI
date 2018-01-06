@@ -42,10 +42,17 @@
             </select>
         </div>
         <div class="form-group">
+            <label>音源 *:</label>
+            <input name="ongen" type="text" class="form-control" placeholder="音源(比如GS、GM、XG等，每个词用' , ' 分割。)" required>
+            <small>
+                请填写与此MIDI音乐相关的音源， 比如GS、GM、XG等，每个词用" , " 分割。
+            </small>
+        </div>
+        <div class="form-group">
             <label>标签:</label>
             <input name="tag" type="text" class="form-control" placeholder="Tag">
             <small>
-                请填写与此MIDI音乐相关的词语（即标签），比如曲作者、歌手的名字、使用的乐器等等，每个词用" ， " 分割。如 钢琴，梁静茹 。设置合适的标签有利于更方便的组织查找MIDI。
+                请填写与此MIDI音乐相关的词语（即标签），比如曲作者、歌手的名字、使用的乐器等等，每个词用" , " 分割。如 钢琴，梁静茹 。设置合适的标签有利于更方便的组织查找MIDI。
             </small>
         </div>
         <div class="form-group">
