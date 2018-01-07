@@ -30,19 +30,23 @@
         <h2 class="text-primary"><a href="{{route('midi.file',['id' => $midi->id])}}">{{$midi->title}} - {{$midi->singer}}</a></h2>
         <p>{{ mb_substr($midi->description, 0, 500) }} ...
         <br/>
-        大小: 
-        <span class="text-success">{{$midi->fileSize()}} KB</span>
+        <span class="text-success">大小: </span>
+        {{$midi->fileSize()}} KB
         <span>
                 
             @php 
                 $tags = explode(",", $midi->tag);
                 $ongens = explode(",", $midi->ongen);
             @endphp
-                音源:
+                <span class="text-success">
+                    音轨数量: {{ $midi->info()["NumberOfTracks"] }}
+                    音源:
+                </span>
+                
             @foreach($ongens as $ongen)
                 <a href="{{route('search.ongen',['ongen' => $ongen])}}">{{$ongen}}</a>
             @endforeach
-                标签:
+                <span class="text-success">标签:</span>
             @foreach($tags as $tag)
                 <a href="{{route('search.tag',['tag' => $tag])}}">{{$tag}}</a>
             @endforeach

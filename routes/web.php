@@ -30,8 +30,12 @@ Route::get('/cat/{cat}','MidiController@searchCat')->name("search.cat");
 
 //API
 Route::prefix('api')->group(function () {
-    Route::get('/midis/','MidiController@apiIndex')->name("api.midi.index");
+    Route::get('/midis/index','MidiController@apiIndex')->name("api.midi.index");
     Route::get('/midis/recent/','MidiController@apiIndexRecent')->name("api.midi.recent");
+    Route::get('/midis/ins/{id}','MidiController@instrument')->name("api.midi.trackInfo");
+    Route::get('/midis/info/{id}','MidiController@info')->name("api.midi.info");
+    
+
 });
 
 //UCP

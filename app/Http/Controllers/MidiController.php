@@ -6,8 +6,27 @@ use App\Midi;
 use App\Cat;
 use Illuminate\Http\Request;
 use Auth;
+use App\Library\MIDIAnalyzer;
+
 class MidiController extends Controller
 {
+    //基本信息
+    public function info($fileid)
+    {
+        $midi = Midi::find($fileid);
+        $midiAnalyzer = new MIDIAnalyzer($midi->file);
+        $header = $midiAnalyzer->getHeader();
+        return $header ;
+    }
+    //获取乐器
+    public function instrument($fileid)
+    {
+        $midi = Midi::find($fileid);
+        //return $midi;
+        $midiAnalyzer = new MIDIAnalyzer($midi->file);
+        $header = $midiAnalyzer->getInstrumentMap();
+        return $header ;
+    }
     //API
     //搜索关键字
     public function search(Request $req)

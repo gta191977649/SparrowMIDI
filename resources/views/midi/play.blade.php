@@ -70,35 +70,52 @@
                 <hr/>
                 <a class="btn btn-primary float-right" role="button" href="{{URL::to('/')}}/{{$midi->file}}" >下载</a>
                 <!-- MIDI文件信息 -->
-                大小: 
-        <span class="text-success">{{$midi->fileSize()}} KB</span>
-        <span>
-                
-            @php 
-                $tags = explode(",", $midi->tag);
-                $ongens = explode(",", $midi->ongen);
-            @endphp
-                音源:
-            @foreach($ongens as $ongen)
-                <a href="{{route('search.ongen',['ongen' => $ongen])}}">{{$ongen}}</a>
-            @endforeach
-                标签:
-            @foreach($tags as $tag)
-                <a href="{{route('search.tag',['tag' => $tag])}}">{{$tag}}</a>
-            @endforeach
-            </span>
-        </p>
+                <span class="text-success">大小: </span>
+                {{$midi->fileSize()}} KB
+                <span>
+                        
+                    @php 
+                        $tags = explode(",", $midi->tag);
+                        $ongens = explode(",", $midi->ongen);
+                    @endphp
+                        <span class="text-success">
+                            音轨数量: {{ $midi->info()["NumberOfTracks"] }}
+                            音源:
+                        </span>
+                        
+                    @foreach($ongens as $ongen)
+                        <a href="{{route('search.ongen',['ongen' => $ongen])}}">{{$ongen}}</a>
+                    @endforeach
+                        <span class="text-success">标签:</span>
+                    @foreach($tags as $tag)
+                        <a href="{{route('search.tag',['tag' => $tag])}}">{{$tag}}</a>
+                    @endforeach
+                    </span>
+       
             </div>
         </div>
-        
+        <!-- 音轨 -->
+        <div class="card mb-3">
+            <h5 class="card-header">音轨分析</h5>
+            <div class="card-body">
+                <div id="midi-track" class="collapse">
+                    <midi-track midi="1"></midi-track>
+                </div>
+                <!-- 展开/收起控制 -->
+                <p class="text-center">
+                    <a href="#" data-toggle="collapse" data-target="#midi-track">展开/收起</a>
+                </p>
+                
+            </div>
+        </div>  
         <!-- 简介 -->
-        <div class="card">
+        <div class="card mb-3">
             <h5 class="card-header">简介/歌词</h5>
             <div class="card-body">
                 {{$midi->description}}
             </div>
         </div>  
-
+   
 
         </div>
         

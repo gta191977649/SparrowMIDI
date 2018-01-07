@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Library\MIDIAnalyzer;
 
 class Midi extends Model
 {
@@ -15,7 +16,8 @@ class Midi extends Model
             "tag" => $request['tag'],
             "description" => $request['description'],
     */
-    protected $fillable = [
+    protected $fillable =
+    [
         'user_id','title', 'singer', 'composer','cat_id','tag','description','file','ongen'
     ];
 
@@ -36,14 +38,18 @@ class Midi extends Model
     public function rateStar()
     {
         $str = "";
-
-        for($i = 0; $i < 10; $i++)
+        for($i = 0; $i < 10; $i++) 
         {
             if($i < $this->rate) $str .= "<i class='fa fa-star text-warning' aria-hidden='true'></i>";
-            else $str .= "<i class='fa fa-star-o text-warning' aria-hidden='true'></i>";
-        }
-        
+            else $str .= "<i class='fa fa-star-o text-warning' aria-hidden='true'></i>";   
+        }        
         return $str;
+    }
 
+    public function info()
+    {
+        $midiAnalyzer = new MIDIAnalyzer($this->file);
+        $info = $midiAnalyzer->getHeader();
+        return $info;
     }
 }
