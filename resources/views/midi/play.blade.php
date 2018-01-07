@@ -99,7 +99,7 @@
             <h5 class="card-header">音轨分析</h5>
             <div class="card-body">
                 <div id="midi-track" class="collapse">
-                    <midi-track midi="1"></midi-track>
+                    <midi-track midi="{{$midi->id}}"></midi-track>
                 </div>
                 <!-- 展开/收起控制 -->
                 <p class="text-center">
