@@ -39,7 +39,7 @@
                 $ongens = explode(",", $midi->ongen);
             @endphp
                 <span class="text-success">
-                    音轨数量: {{ $midi->info()["NumberOfTracks"] }}
+                    {{--音轨数量: {{ $midi->info()["NumberOfTracks"] }}  卡顿...机速升天 --}}
                     音源:
                 </span>
                 
