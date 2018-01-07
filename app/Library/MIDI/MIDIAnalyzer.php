@@ -37,7 +37,7 @@ class MIDIAnalyzer{
             
                 if(isset($track_dump['MetaEventData']) && $var == 0)
                 {
-                    $tem = array("TruckName" =>  iconv("GBK", "UTF-8//IGNORE", $track_dump['MetaEventData']),"ProgramNumber" => 0 );
+                    $tem = array("TruckName" =>  mb_convert_encoding($track_dump['MetaEventData'],'UTF-8', 'GBK' ),"ProgramNumber" => 0 );
                     array_push($midiInfo, $tem);
                     $var = 1;
                 }	
@@ -54,6 +54,7 @@ class MIDIAnalyzer{
         return $midiInfo;
 
     }
+	
     public function getHeader()
     {
         $midi = new IOMIDI();
