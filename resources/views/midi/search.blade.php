@@ -58,6 +58,6 @@
 
     
     <!-- 分页 -->
-    {{$midis->links()}}
+    {{$midis->links('vendor.pagination.bootstrap-4')}}
 
 @endsection
