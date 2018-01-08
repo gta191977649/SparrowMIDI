@@ -130,7 +130,7 @@ class MidiController extends Controller
             "file" => $file_url,
         ]);
         
-        return redurect()->route("ucp");
+        return redirect()->route("ucp");
 
     }
 
