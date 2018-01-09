@@ -50,6 +50,7 @@
             @foreach($tags as $tag)
                 <a href="{{route('search.tag',['tag' => $tag])}}">{{$tag}}</a>
             @endforeach
+            
             </span>
         </p>
 

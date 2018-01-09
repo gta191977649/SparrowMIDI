@@ -18,7 +18,7 @@
                         </tr>
                         <tr>
                             <td>艺术家:</td>
-                            <td>{{$midi->singer}}</td>
+                            <td><a href="{{route('search.singer',['singer'=>$midi->singer])}}">{{$midi->singer}}</a></td>
                         </tr>
                         <tr>
                             <td>流派分类:</td>
@@ -68,7 +68,7 @@
                 Get Windows Media Player (Plugin)!
                 </object>	
                 <hr/>
-                <a class="btn btn-primary float-right" role="button" href="{{URL::to('/')}}/{{$midi->file}}" >下载</a>
+                <a class="btn btn-primary float-right" role="button" href="{{route('midi.file.download',['id' => $midi->id] )}}" >下载</a>
                 <!-- MIDI文件信息 -->
                 <span class="text-success">大小: </span>
                 {{$midi->fileSize()}} KB

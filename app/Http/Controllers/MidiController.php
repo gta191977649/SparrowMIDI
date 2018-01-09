@@ -28,6 +28,13 @@ class MidiController extends Controller
         return $header ;
     }
     //API
+    //搜索歌手
+    public function searchSinger($singer)
+    {   
+        $keyword = $singer;
+        $midis = Midi::where("singer",'LIKE', '%'.$keyword.'%')->paginate(10);
+        return view("midi.search",compact("midis","keyword"));
+    }
     //搜索关键字
     public function search(Request $req)
     {   
@@ -97,6 +104,14 @@ class MidiController extends Controller
         //
         $cats = Cat::get();
         return view("ucp.midi.upload",compact("cats"));
+    }
+
+    //下载文件
+    public function download($id)
+    {
+        $midi = Midi::find($id);
+
+        return response()->download($midi->file, $midi->title." - ".$midi->singer.".mid");
     }
 
     /**

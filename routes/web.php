@@ -21,12 +21,14 @@ Route::get('/', 'HomeController@index')->name('index');
 Route::get('/about', 'HomeController@about')->name('about');
 //常规
 Route::get('/midi/{id}','MidiController@file')->name("midi.file");
+Route::get('/midi/dl/{id}','MidiController@download')->name("midi.file.download");
 
 //Search
 Route::get('/search/','MidiController@search')->name("search");
 Route::get('/tag/{tag}','MidiController@searchTag')->name("search.tag");
 Route::get('/ongen/{ongen}','MidiController@searchOngen')->name("search.ongen");
 Route::get('/cat/{cat}','MidiController@searchCat')->name("search.cat");
+Route::get('/artist/{cat}','MidiController@searchSinger')->name("search.singer");
 
 //API
 Route::prefix('api')->group(function () {
