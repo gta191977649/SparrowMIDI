@@ -75,7 +75,7 @@ class MidiController extends Controller
     //列出最新MIDI (10页面)
     public function apiIndexRecent()
     {
-        return Midi::get()->take(10);
+        return Midi::orderBy('created_at', 'desc')->get()->take(10);
     }
 
     //MIDI播放页面
