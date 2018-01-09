@@ -63,3 +63,11 @@
         <button type="submit" class="btn btn-primary">上载</button>
     </form>
 @endsection
+@section("js")
+    <!-- Ckeditor JS -->
+    <script src="{{ asset('vendor/unisharp/laravel-ckeditor/ckeditor.js') }}"></script>
+
+    <script>
+        CKEDITOR.replace( 'description' );
+    </script>
+@endsection

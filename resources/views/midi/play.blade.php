@@ -112,7 +112,7 @@
         <div class="card mb-3">
             <h5 class="card-header">简介/歌词</h5>
             <div class="card-body">
-                {{$midi->description}}
+                {!!$midi->description!!}
             </div>
         </div>  
    
