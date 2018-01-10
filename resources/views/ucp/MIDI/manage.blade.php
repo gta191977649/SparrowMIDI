@@ -22,7 +22,7 @@
             @foreach($midis as $midi)
             <tr>
                 <th scope="row">{{$midi->id}}</th>
-                <td>{{$midi->title}} - {{$midi->singer}}</td>
+                <td>{{mb_substr($midi->title .' - '.$midi->singer, 0, 20)}}</td>
                 <td>Time</td>
                 <td>{{$midi->created_at}}</td>
                 <td>{{$midi->rate}}/10</td>
