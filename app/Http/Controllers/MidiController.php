@@ -7,6 +7,7 @@ use App\Cat;
 use Illuminate\Http\Request;
 use Auth;
 use App\Library\MIDIAnalyzer;
+use File;
 
 class MidiController extends Controller
 {
@@ -67,6 +68,12 @@ class MidiController extends Controller
         return view("midi.search",compact("midis","keyword"));
     }
 
+    public function manage()
+    {
+
+        $midis = Midi::where("user_id",Auth::user()->id)->paginate(10);
+        return view('ucp.midi.manage',compact("midis"));
+    }
     //列出全部MIDI
     public function apiIndex()
     {
@@ -99,6 +106,7 @@ class MidiController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
     public function upload()
     {
         //
@@ -178,9 +186,18 @@ class MidiController extends Controller
      * @param  \App\Midi  $midi
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Midi $midi)
+    public function updateView($id)
+    {
+        $midi = Midi::find($id);
+        $cats = Cat::get();
+        return view("ucp.midi.edit",compact("midi","cats"));
+    }
+    public function update(Request $request, $id)
     {
         //
+        $midi = Midi::find($id);
+        $midi->update($request->all());
+        return redirect()->route('ucp.midi.manage');
     }
 
     /**
@@ -189,8 +206,16 @@ class MidiController extends Controller
      * @param  \App\Midi  $midi
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Midi $midi)
+    public function destroy($id)
     {
-        //
+        $midi = Midi::find($id);
+        //Delete File
+        if(File::exists($midi->file))
+            File::delete($midi->file);
+
+        //Delete Data
+        
+        $midi->delete();
+        return redirect()->route('ucp.midi.manage');
     }
 }

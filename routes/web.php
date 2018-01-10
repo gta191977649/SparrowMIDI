@@ -30,6 +30,9 @@ Route::get('/ongen/{ongen}','MidiController@searchOngen')->name("search.ongen");
 Route::get('/cat/{cat}','MidiController@searchCat')->name("search.cat");
 Route::get('/artist/{cat}','MidiController@searchSinger')->name("search.singer");
 
+//系统统计
+Route::get('/system/','SystemController@status')->name("status");
+
 //API
 Route::prefix('api')->group(function () {
     Route::get('/midis/index','MidiController@apiIndex')->name("api.midi.index");
@@ -47,6 +50,10 @@ Route::middleware(['auth'])->group(function () {
     //MIDI
     Route::get('/ucp/midi/new','MidiController@upload')->name("ucp.midi.add");
     Route::post('/ucp/midi/upload','MidiController@store')->name("ucp.midi.upload");
+    Route::post('/ucp/midi/update/{id}','MidiController@update')->name("ucp.midi.update.submit");
+    Route::get('/ucp/midi/update/{id}','MidiController@updateView')->name("ucp.midi.update");
+    Route::get('/ucp/midi/delete/{id}','MidiController@destroy')->name("ucp.midi.delete");
+    Route::get('/ucp/midi/manage','MidiController@manage')->name("ucp.midi.manage");
 });
 
 

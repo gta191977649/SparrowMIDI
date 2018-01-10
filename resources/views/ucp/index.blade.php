@@ -1,7 +1,7 @@
 @extends("layouts.ucp")
 
 @section("content")
-    <h4 class="card-title">Welcome, {{Auth::user()->name}}~</h4>
+    <h4 class="text-primary">Welcome, {{Auth::user()->name}}~</h4>
     <hr/>
 
 
