@@ -25,7 +25,7 @@
         <div class="col-12 col-md-10">
         @if($total)
         <div class="table-responsive">
-            <table class="table table-bordered table-sm">
+            <table class="table table-bordered">
                 <thead>
                     <tr>
                     <th scope="col">名称</th>
