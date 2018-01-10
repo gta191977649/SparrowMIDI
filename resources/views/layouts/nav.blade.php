@@ -11,7 +11,7 @@
                 <a class="nav-link" href="/">首页</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">MIDI</a>
+                <a class="nav-link" href="{{route('midi')}}">MIDI</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">音色库</a>

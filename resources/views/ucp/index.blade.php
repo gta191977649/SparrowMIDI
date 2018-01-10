@@ -14,7 +14,7 @@
             <tbody>
                 @foreach($user->midis as $midi)
                 <tr>
-                <td scope="row"><a href="{{route('midi.file',['id'=>$midi->id])}}">{{$midi->title}} - {{$midi->singer}}</a></td>
+                <td scope="row"><a href="{{route('midi.file',['id'=>$midi->id])}}">{{mb_substr($midi->title .' - '.$midi->singer, 0, 30)}}</a></td>
                 <td>{!! $midi->rateStar() !!}</td>
                 <td class="text-right">{{$midi->created_at}}</td>
                 </tr>

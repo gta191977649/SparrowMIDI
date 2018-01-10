@@ -40,8 +40,8 @@ class Midi extends Model
         $str = "";
         for($i = 0; $i < 10; $i++) 
         {
-            if($i < $this->rate) $str .= "<i class='fa fa-star text-warning' aria-hidden='true'></i>";
-            else $str .= "<i class='fa fa-star-o text-warning' aria-hidden='true'></i>";   
+            if($i < $this->rate) $str .= "<i class='fa fa-star' aria-hidden='true'></i>";
+            else $str .= "<i class='fa fa-star-o' aria-hidden='true'></i>";   
         }        
         return $str;
     }

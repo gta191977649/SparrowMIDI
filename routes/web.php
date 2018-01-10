@@ -30,6 +30,10 @@ Route::get('/ongen/{ongen}','MidiController@searchOngen')->name("search.ongen");
 Route::get('/cat/{cat}','MidiController@searchCat')->name("search.cat");
 Route::get('/artist/{cat}','MidiController@searchSinger')->name("search.singer");
 
+//MIDI列出
+Route::get('/midi/','MidiController@midiIndex')->name("midi");
+Route::get('/midi/cat/{id}','MidiController@midiIndexCat')->name("midi.cat");
+
 //系统统计
 Route::get('/system/','SystemController@status')->name("status");
 

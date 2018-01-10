@@ -11,6 +11,22 @@ use File;
 
 class MidiController extends Controller
 {
+    public function midiIndex()
+    {
+        $midis = Midi::paginate(10);
+        $cats = Cat::get();
+        $total = Midi::count();
+        return view("midi",compact("midis","cats","total"));
+    }
+    public function midiIndexCat($cat)
+    {
+        $midi_temp = Midi::where('cat_id',$cat);
+        $total = $midi_temp->count();
+        $midis = $midi_temp->paginate(10);
+        $cats = Cat::get();
+        return view("midi",compact("midis","cats","total"));
+    }
+    
     //基本信息
     public function info($fileid)
     {
