@@ -32,6 +32,10 @@
                             <td>大小:</td>
                             <td>@php echo round(filesize($midi->file)*0.001,1) @endphp KB</td>
                         </tr>
+                        <tr>
+                            <td>得点:</td>
+                            <td>{!! $midi->rateStar() !!}</td>
+                        </tr>
                   </tbody>
                 </table>
             </div>
