@@ -112,7 +112,7 @@
                     </audio>
                     <hr/>
                     <span class="text-success">
-                        录制音源: <span class="text-primary">{{$midi->hq->ongen}}</span>
+                        录制音源: <span class="text-primary">{{$midi->hq->ogen}}</span>
                     </span>
 
                     @else
