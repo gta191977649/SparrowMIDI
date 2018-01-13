@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Midi;
+use App\Mp3;
 use App\Cat;
 use Illuminate\Http\Request;
 use Auth;
@@ -105,7 +106,8 @@ class MidiController extends Controller
     public function file($id)
     {
         $midi = Midi::find($id);
-        return $midi ? view("midi.play",compact("midi")) : "FAILD";
+        
+        return $midi ? view("midi.play",compact("midi")) : "无效的文件ID!";
     }
     /** 
      * Display a listing of the resource.
@@ -134,8 +136,9 @@ class MidiController extends Controller
     public function download($id)
     {
         $midi = Midi::find($id);
-
-        return response()->download($midi->file, $midi->title." - ".$midi->singer.".mid");
+        //处理非法文件名转义
+        $newFilename = preg_replace("/[^A-Za-z0-9\_\-\.]/", '',$midi->title." - ".$midi->singer.".mid");
+        return response()->download($midi->file, $newFilename);
     }
 
     /**
@@ -225,13 +228,17 @@ class MidiController extends Controller
     public function destroy($id)
     {
         $midi = Midi::find($id);
+        $hq = Mp3::where('midi_id',$midi)->get();
         //Delete File
         if(File::exists($midi->file))
             File::delete($midi->file);
 
         //Delete Data
+        //Find HQ Mp3
         
+
         $midi->delete();
+        if ($hq) $hq->delete();
         return redirect()->route('ucp.midi.manage');
     }
 }

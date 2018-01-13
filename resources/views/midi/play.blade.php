@@ -41,17 +41,24 @@
         <div class="col-12 col-md-9">
             
         <div class="card mb-3">
+            
             <div class="card-header">
-                <ul class="nav nav-tabs card-header-tabs">
+                <ul class="nav nav-tabs card-header-tabs" role="tablist">
                     <li class="nav-item">
-                        <a class="nav-link active" href="#">MIDI</a>
+                        <a class="nav-link active" href="#midi" role="tab" data-toggle="tab">MIDI</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">KARAOKE</a>
+                        <a class="nav-link" href="#mp3" role="tab" data-toggle="tab">MIDI-HQ</a>
                     </li>
-                </ul>
+                    
+                </ul>          
+                    
             </div>
-            <div class="card-body">
+      
+        <div class="card-body">
+            <div class="tab-content">
+                <!-- MIDI -->
+                <div role="tabpanel" class="tab-pane fade in active" id="midi">
                 <!--[if IE]>
                 <object
                 classid="CLSID:22D6f312-B0F6-11D0-94AB-0080C74C7E95" 
@@ -61,37 +68,52 @@
                 <![endif]-->
                 <!--[if !IE]>-->
                 <object type="video/x-ms-asf-plugin" data="{{URL::to('/')}}/{{$midi->file}}" width="100%" height="80px" id="wm_player" class="h2_player" >
-                <!--<![endif]-->
-                <param name="AutoStart" value="true" />
-                <param name="Loop" value="true" />
-                <param name="ShowControls" value="true" />
-                Get Windows Media Player (Plugin)!
+                    <!--<![endif]-->
+                    <param name="AutoStart" value="true" />
+                    <param name="Loop" value="true" />
+                    <param name="ShowControls" value="true" />
+                    Get Windows Media Player (Plugin)!
                 </object>	
-                <hr/>
-                <a class="btn btn-primary float-right" role="button" href="{{route('midi.file.download',['id' => $midi->id] )}}" >下载</a>
-                <!-- MIDI文件信息 -->
-                <span class="text-success">大小: </span>
-                {{$midi->fileSize()}} KB
-                <span>
-                        
-                    @php 
-                        $tags = explode(",", $midi->tag);
-                        $ongens = explode(",", $midi->ongen);
-                    @endphp
-                        <span class="text-success">
-                            音轨数量: {{ $midi->info()["NumberOfTracks"] }}
-                            音源:
-                        </span>
-                        
-                    @foreach($ongens as $ongen)
-                        <a href="{{route('search.ongen',['ongen' => $ongen])}}">{{$ongen}}</a>
-                    @endforeach
-                        <span class="text-success">标签:</span>
-                    @foreach($tags as $tag)
-                        <a href="{{route('search.tag',['tag' => $tag])}}">{{$tag}}</a>
-                    @endforeach
+                    <hr/>
+                    <a class="btn btn-primary float-right" role="button" href="{{route('midi.file.download',['id' => $midi->id] )}}" >下载</a>
+                    <!-- MIDI文件信息 -->
+                    <span class="text-success">大小: </span>
+                    {{$midi->fileSize()}} KB
+                    <span>
+                            
+                        @php 
+                            $tags = explode(",", $midi->tag);
+                            $ongens = explode(",", $midi->ongen);
+                        @endphp
+                            <span class="text-success">
+                                音轨数量: {{ $midi->info()["NumberOfTracks"] }}
+                                音源:
+                            </span>
+                            
+                        @foreach($ongens as $ongen)
+                            <a href="{{route('search.ongen',['ongen' => $ongen])}}">{{$ongen}}</a>
+                        @endforeach
+                            <span class="text-success">标签:</span>
+                        @foreach($tags as $tag)
+                            <a href="{{route('search.tag',['tag' => $tag])}}">{{$tag}}</a>
+                        @endforeach
                     </span>
-       
+
+                </div>
+                <div role="tabpanel" class="tab-pane fade" id="mp3">
+                    @if($midi->hq)
+                    <audio controls>
+                        <source src="{{$midi->hq->url}}" type="audio/mpeg">
+                    [ Your browser does not support the audio element. ]
+                    </audio>
+                    @else
+                    <h3 class="text-center text-info">没有找到关于的MIDI HQ预览文件!</h3>
+                    @endif
+
+                </div>
+              
+            </div>  
+     
             </div>
         </div>
         <!-- 音轨 -->

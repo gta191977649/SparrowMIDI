@@ -29,7 +29,10 @@ class Midi extends Model
     {
         return $this->belongsTo('App\Cat');
     }
-
+    public function hq()
+    {
+        return $this->hasOne('App\Mp3');
+    }
     public function fileSize()
     {
         return round(filesize($this->file)*0.001,1);
