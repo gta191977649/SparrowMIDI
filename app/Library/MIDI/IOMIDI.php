@@ -45,7 +45,7 @@ class IOMIDI {
             } elseif(isset($chunk['xfkaraoke'])) {
                 $this->xfkaraoke = $chunk;
             } else {
-                fprintf(STDERR, "Can't parse chunk.\n");
+                //fprintf(STDERR, "Can't parse chunk.\n");
                 break;
             }
         }
@@ -71,7 +71,7 @@ class IOMIDI {
               $chunk['xfkaraoke'] = $this->_parseChunkXFKaraoke($reader, $nextOffset);
               break;
           default:
-              fprintf(STDERR, "warning: Unknown chunk (type=$type)\n");
+              //fprintf(STDERR, "warning: Unknown chunk (type=$type)\n");
               return array();
         }
         list($doneOffset, $dummy) = $reader->getOffset();
