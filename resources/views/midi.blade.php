@@ -38,7 +38,12 @@
                 <tbody>
                 @foreach($midis as $midi)
                     <tr>
-                    <td scope="row"><a href="{{route('midi.file',['id'=>$midi->id])}}">{{mb_substr($midi->title .' - '.$midi->singer, 0, 30)}}</a></td>
+                    <td scope="row">
+                        <a href="{{route('midi.file',['id'=>$midi->id])}}">{{mb_substr($midi->title .' - '.$midi->singer, 0, 30)}}</a>
+                        @if($midi->hq) 
+                            <span class="badge badge-success">HQ</span>
+                        @endif
+                    </td>
                     <td>{{$midi->user->name}}</td>
                     <td>{!!$midi->rateStar()!!}</td>
                     <td>Time</td>
