@@ -110,9 +110,15 @@
                         <source src="{{$midi->hq->url}}" type="audio/mpeg">
                     [ Your browser does not support the audio element. ]
                     </audio>
+                    <hr/>
+                    <span class="text-success">
+                        录制音源: <span class="text-primary">{{$midi->hq->ongen}}</span>
+                    </span>
+
                     @else
                     <h3 class="text-center text-info">没有找到关于的MIDI HQ预览文件!</h3>
                     @endif
+                    
 
                 </div>
               
