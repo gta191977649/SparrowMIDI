@@ -55,6 +55,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/ucp/midi/new','MidiController@upload')->name("ucp.midi.add");
     Route::post('/ucp/midi/upload','MidiController@store')->name("ucp.midi.upload");
     Route::post('/ucp/midi/update/{id}','MidiController@update')->name("ucp.midi.update.submit");
+    Route::post('/ucp/midi_hq/update/{id}','Mp3Controller@update')->name("ucp.mp3.update.submit");
     Route::get('/ucp/midi/update/{id}','MidiController@updateView')->name("ucp.midi.update");
     Route::get('/ucp/midi/delete/{id}','MidiController@destroy')->name("ucp.midi.delete");
     Route::get('/ucp/midi/manage','MidiController@manage')->name("ucp.midi.manage");

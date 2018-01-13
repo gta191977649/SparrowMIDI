@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Mp3;
+use App\Midi;
 use Illuminate\Http\Request;
 
 class Mp3Controller extends Controller
@@ -67,9 +68,18 @@ class Mp3Controller extends Controller
      * @param  \App\Mp3  $mp3
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Mp3 $mp3)
+    public function update($id,Request $request)
     {
-        //
+    
+        //$midi = Midi::find($id);
+        //$midi->hq->create($request->all());
+       
+        Mp3::create([
+            "midi_id" => $id,
+            "url" => $request["url"],
+            "ogen" => $request["ogen"] 
+        ]);
+        return redirect()->route('ucp.midi.manage'); 
     }
 
     /**
