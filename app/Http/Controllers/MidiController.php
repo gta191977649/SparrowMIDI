@@ -137,7 +137,8 @@ class MidiController extends Controller
     {
         $midi = Midi::find($id);
         //处理非法文件名转义
-        $newFilename = preg_replace("/[^A-Za-z0-9\_\-\.]/", '',$midi->title." - ".$midi->singer.".mid");
+        
+        $newFilename = str_replace(array('\\','/',':','*','?','"','<','>','|'),'',$midi->title." - ".$midi->singer.".mid");
         return response()->download($midi->file, $newFilename);
     }
 
