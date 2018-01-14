@@ -12,6 +12,8 @@ let mix = require('laravel-mix');
  */
 
 mix.js('resources/assets/js/app.js', 'public/js')
-   .sass('resources/assets/sass/app.scss', 'public/css');
-
+.scripts([
+    'resources/assets/js/custom.js',
+], 'public/js/custom.js')
+.sass('resources/assets/sass/app.scss', 'public/css');
 mix.styles(['resources/assets/css/custom.css'], 'public/css/custom.css');

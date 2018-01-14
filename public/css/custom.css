@@ -1,3 +1,6 @@
 body{
     font-family:"宋体","MS Gothic";
 }
+#app {
+    display: none;
+}

@@ -63,6 +63,7 @@
     <script src="{{ asset('js/app.js') }}"></script>
     <!-- Addition js -->
     @yield('js')
-
 </body>
+<!-- Loading Effect -->
+<script src="{{ asset('js/custom.js') }}"></script>
 </html>
