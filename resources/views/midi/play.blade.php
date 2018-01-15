@@ -79,7 +79,7 @@
                     Get Windows Media Player (Plugin)!
                 </object>	
                 <hr/>
-                <a class="btn btn-primary float-right" role="button" href="{{route('midi.file.download',['id' => $midi->id] )}}" >下载</a>
+                <a class="btn btn-primary float-right" role="button" target="_blank" href="{{route('midi.file.download',['id' => $midi->id] )}}" >下载</a>
                 <!-- MIDI文件信息 -->
                 <span class="text-success">大小: </span>
                 {{$midi->fileSize()}} KB
