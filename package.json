@@ -19,7 +19,9 @@
     "vue": "^2.5.7"
   },
   "dependencies": {
+    "bootstrap-3-typeahead": "^4.0.2",
     "bootswatch": "^4.0.0-beta.2",
-    "font-awesome": "^4.7.0"
+    "font-awesome": "^4.7.0",
+    "vue-typeahead": "^2.3.2"
   }
 }

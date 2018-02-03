@@ -27,15 +27,18 @@
 
         <div class="col-12 col-md-3">
             <a role="button" href="{{route('ucp.midi.add')}}" class="btn btn-outline-success btn-lg btn-block text-success mb-3">分享你的MIDI~</a>
-            
+      
             <div class="card">
                 <div class="card-header">
                     搜索
                 </div>
                 <div class="card-body">
                     <form method="get" action="{{route('search')}}">
+                        
                         <div class="form-group">
-                            <input name="keyword" type="text" class="form-control" name="search" placeholder="搜索MIDI">
+                            
+                            <search></search>
+                            <!--<input name="keyword" type="text" class="form-control" name="search" placeholder="搜索MIDI"> -->
                         </div>
                         <button type="submit" class="btn btn-primary">搜索</button>
                         

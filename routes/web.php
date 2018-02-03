@@ -39,6 +39,7 @@ Route::get('/system/','SystemController@status')->name("status");
 
 //API
 Route::prefix('api')->group(function () {
+    Route::get('/midis/search/{keyword}','MidiController@apiSearch')->name("api.midi.index");
     Route::get('/midis/index','MidiController@apiIndex')->name("api.midi.index");
     Route::get('/midis/recent/','MidiController@apiIndexRecent')->name("api.midi.recent");
     Route::get('/midis/ins/{id}','MidiController@instrument')->name("api.midi.trackInfo");

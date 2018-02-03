@@ -12,6 +12,15 @@ use File;
 
 class MidiController extends Controller
 {
+    public function apiSearch($keyword){
+        $midis = Midi::where("title",'LIKE', '%'.$keyword.'%')
+            ->orWhere("singer",'LIKE', '%'.$keyword.'%')
+            ->orWhere("tag",'LIKE', '%'.$keyword.'%')
+            ->get();
+            
+        return $midis;
+    }
+
     public function midiIndex()
     {
         $midis = Midi::paginate(10);
