@@ -10,7 +10,7 @@
           <h5 class="card-title">搜索</h5>
             <form method="get" action="{{route('search')}}">
                 <div class="form-group">
-                    <input name="keyword" type="text" class="form-control" name="search" placeholder="搜索MIDI">
+                    <search></search>
                 </div>
                 <button type="submit" class="btn btn-primary">搜索</button>
             
