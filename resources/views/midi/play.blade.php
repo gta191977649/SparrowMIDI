@@ -108,7 +108,7 @@
 
                 </div> 
                 <div role="tabpanel" class="tab-pane" id="midijs">
-                    <a href="#" onClick="MIDIjs.play('{{URL::to('/')}}/{{$midi->file}}');">播放{{$midi->title}} - {{$midi->singer}}</a>
+                    <a href="#" onClick="MIDIjs.play('{{secure_url('/')}}/{{$midi->file}}');">播放{{$midi->title}} - {{$midi->singer}}</a>
                     <div id="info">Ready.</div>
                     <p>MIDI.JS 可以在Windows系统上合成声音</p>
                 </div>
