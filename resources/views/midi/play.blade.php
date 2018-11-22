@@ -52,6 +52,9 @@
                         <a class="nav-link active" href="#midi" role="tab" data-toggle="tab">MIDI</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="#midijs" role="tab" data-toggle="tab">MIDI-JS</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="#mp3" role="tab" data-toggle="tab">MIDI-HQ</a>
                     </li>
                     
@@ -103,6 +106,11 @@
                     @endforeach
                 </span>
 
+                </div> 
+                <div role="tabpanel" class="tab-pane" id="midijs">
+                    <a href="#" onClick="MIDIjs.play('{{URL::to('/')}}/{{$midi->file}}');">播放{{$midi->title}} - {{$midi->singer}}</a>
+                    <div id="info">Ready.</div>
+                    <p>MIDI.JS 可以在Windows系统上合成声音</p>
                 </div>
                 <div role="tabpanel" class="tab-pane" id="mp3">
                     @if($midi->hq)
@@ -152,4 +160,13 @@
         </div>
         
     </div>
+@endsection
+@section('js')
+    <script type='text/javascript' src='//www.midijs.net/lib/midi.js'></script>
+    <script>
+        function display_msg(msg) {
+            info.innerHTML = msg;
+        };
+	    MIDIjs.message_callback = display_msg;
+    </script>
 @endsection
